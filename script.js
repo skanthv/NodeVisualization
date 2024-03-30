@@ -1,6 +1,8 @@
 /*This is a comment. These functions are used to provide interactivity in the site*/
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+let previousNode = null; // Track the previous node for linking
+let nextNodeId = 4; // Start with 4 because nodes 1, 2, and 3 are already created
 
 const nodes = [
   { id: 1, x: 50, y: 50, text: 'Node 1' },
@@ -19,7 +21,7 @@ function drawNodes() {
 
   console.log("Nodes array:");
   nodes.forEach(node => {
-  console.log(`Node ${node.id}: x=${node.x}, y=${node.y}`);
+  console.log(`Node ${node.text}: ${node.id}: x=${node.x}, y=${node.y}`);
   });
 
   nodes.forEach(node => {
@@ -27,6 +29,7 @@ function drawNodes() {
     ctx.fillRect(node.x, node.y, 100, 50);
     ctx.fillStyle = '#fff';
     ctx.fillText(node.text, node.x + 10, node.y + 30);
+    nextNodeId++;
   });
 }
 
@@ -41,6 +44,8 @@ function drawLinks() {
     ctx.quadraticCurveTo((sourceNode.x + targetNode.x + 100) / 2, (sourceNode.y + targetNode.y + 50) / 2, targetNode.x, targetNode.y + 25);
     ctx.stroke();
   });
+  previousNode = targetNode; // Track the previous node for linking
+
 }
 
 function draw() {
@@ -52,7 +57,6 @@ function draw() {
 }
 
 
-let nextNodeId = 4; // Start with 4 because nodes 1, 2, and 3 are already created
 
 function addNode() {
   console.log('Adding node...');
