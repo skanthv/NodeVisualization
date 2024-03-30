@@ -1,3 +1,4 @@
+/*This is a comment. These functions are used to provide interactivity in the site*/
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
