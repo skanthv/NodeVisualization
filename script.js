@@ -39,4 +39,19 @@ function draw() {
   drawLinks();
 }
 
+
+let nextNodeId = 4; // Start with 4 because nodes 1, 2, and 3 are already created
+
+function addNode() {
+  const nodeText = document.getElementById('nodeText').value;
+  if (!nodeText) return; // Don't add empty nodes
+
+  const newNode = { id: nextNodeId, x: 300, y: 300, text: nodeText };
+  nodes.push(newNode);
+  nextNodeId++;
+
+  draw(); // Redraw canvas with the new node
+}
+
+
 draw();
