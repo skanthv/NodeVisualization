@@ -43,8 +43,9 @@ function drawLinks() {
     ctx.moveTo(sourceNode.x + 100, sourceNode.y + 25);
     ctx.quadraticCurveTo((sourceNode.x + targetNode.x + 100) / 2, (sourceNode.y + targetNode.y + 50) / 2, targetNode.x, targetNode.y + 25);
     ctx.stroke();
+    previousNode = targetNode; // Track the previous node for linking new node
+
   });
-  previousNode = targetNode; // Track the previous node for linking
 
 }
 
