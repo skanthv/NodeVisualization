@@ -16,6 +16,11 @@ const links = [
 function drawNodes() {
   console.log('drawNodes called....');
 
+  console.log("Nodes array:");
+  nodes.forEach(node => {
+  console.log(`Node ${node.id}: x=${node.x}, y=${node.y}`);
+  });
+
   nodes.forEach(node => {
     ctx.fillStyle = '#f00';
     ctx.fillRect(node.x, node.y, 100, 50);
@@ -61,5 +66,16 @@ function addNode() {
   draw(); // Redraw canvas with the new node
 }
 
+function adjustCanvasSize() {
+  let maxX = 0, maxY = 0;
+  nodes.forEach(node => {
+    if (node.x > maxX) maxX = node.x;
+    if (node.y > maxY) maxY = node.y;
+  });
 
-draw();
+  canvas.width = maxX + 200; // Add some padding
+  canvas.height = maxY + 200; // Add some padding
+}
+
+adjustCanvasSize();
+draw(); // Redraw canvas with the adjusted size
