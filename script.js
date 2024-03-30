@@ -62,8 +62,14 @@ function addNode() {
 
   const newNode = { id: nextNodeId, x: 300, y: 300, text: nodeText };
   nodes.push(newNode);
-  nextNodeId++;
 
+// Link the new node to the previous node, if it exists
+  if (previousNode) {
+    links.push({ source: previousNode.id, target: newNode.id });
+  }
+  previousNode = newNode; // Update the previous node
+  
+  nextNodeId++;
   draw(); // Redraw canvas with the new node
 }
 
