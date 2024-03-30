@@ -14,6 +14,8 @@ const links = [
 ];
 
 function drawNodes() {
+  console.log('drawNodes called....');
+
   nodes.forEach(node => {
     ctx.fillStyle = '#f00';
     ctx.fillRect(node.x, node.y, 100, 50);
@@ -23,6 +25,8 @@ function drawNodes() {
 }
 
 function drawLinks() {
+  console.log('DrawLinks called...');
+
   links.forEach(link => {
     const sourceNode = nodes.find(node => node.id === link.source);
     const targetNode = nodes.find(node => node.id === link.target);
@@ -34,6 +38,8 @@ function drawLinks() {
 }
 
 function draw() {
+  console.log('Draw called...');
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawNodes();
   drawLinks();
@@ -43,6 +49,8 @@ function draw() {
 let nextNodeId = 4; // Start with 4 because nodes 1, 2, and 3 are already created
 
 function addNode() {
+  console.log('Adding node...');
+
   const nodeText = document.getElementById('nodeText').value;
   if (!nodeText) return; // Don't add empty nodes
 
